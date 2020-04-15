@@ -57,7 +57,7 @@ class IntegrationInterface {
     /**
      * @brief getAllAvailableEntities Can be implemented by integration
      */
-    virtual QStringList getAllAvailableEntities() = 0;
+    virtual QVariantMap getAllAvailableEntities() = 0;
 
     /**
      * @brief sendCommand Must be implemented as Q_INVOKABLE
@@ -72,7 +72,7 @@ class IntegrationInterface {
      * @brief state Returns the current state. See States enum definition.
      * @details A Q_PROPERTY must be implemented with this method as READ accessor.
      */
-    virtual int     state() = 0;
+    virtual int state() = 0;
 
     /**
      * @brief state Returns the integration identifier.
