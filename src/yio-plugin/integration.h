@@ -101,4 +101,8 @@ class Integration : public QObject, public IntegrationInterface {
     ConfigInterface*        m_config;
     QLoggingCategory&       m_logCategory;
     QVariantList            m_allAvailableEntities;
+    /// containts QVariantMap objects with the following keys
+    /// "entity_id": entity id
+    /// "type": type of entity, like light
+    /// "integration_id": id of the integration controlling the entity
 };
