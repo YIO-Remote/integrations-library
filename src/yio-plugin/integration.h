@@ -63,7 +63,7 @@ class Integration : public QObject, public IntegrationInterface {
     Q_INVOKABLE void disconnect() = 0;                                             // Must be implemented by integration
     void             enterStandby() {}                                             // Can be overriden by integration
     void             leaveStandby() {}                                             // Can be overriden by integration
-    QStringList      getAllAvailableEntities() { return m_allAvailableEntities; }  // Can be overriden by integration
+    QVariantMap      getAllAvailableEntities() { return m_allAvailableEntities; }  // Can be overriden by integration
     Q_INVOKABLE void sendCommand(const QString& type, const QString& entity_id, int command, const QVariant& param) = 0;
 
     // get the state
@@ -100,5 +100,5 @@ class Integration : public QObject, public IntegrationInterface {
     YioAPIInterface*        m_yioapi;
     ConfigInterface*        m_config;
     QLoggingCategory&       m_logCategory;
-    QStringList             m_allAvailableEntities;
+    QVariantMap             m_allAvailableEntities;
 };
