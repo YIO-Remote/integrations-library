@@ -70,7 +70,7 @@ void IntegrationThreadAdapter::leaveStandby() {
     emit leaveStandbySignal();
 }
 
-QStringList IntegrationThreadAdapter::getAllAvailableEntities() {
+QVariantList IntegrationThreadAdapter::getAllAvailableEntities() {
     qCDebug(m_logCategory) << "ThreadAdapter getAllAvailableEntities";
     return m_integration.getAllAvailableEntities();
 }

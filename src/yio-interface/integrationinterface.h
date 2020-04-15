@@ -57,7 +57,7 @@ class IntegrationInterface {
     /**
      * @brief getAllAvailableEntities Can be implemented by integration
      */
-    virtual QVariantMap getAllAvailableEntities() = 0;
+    virtual QVariantList getAllAvailableEntities() = 0;
 
     /**
      * @brief sendCommand Must be implemented as Q_INVOKABLE
