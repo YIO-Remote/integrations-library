@@ -71,6 +71,13 @@ Integration::~Integration() {}
 
 bool Integration::addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
                                      const QString& friendly_name, const QStringList& supported_features) {
+    // if the entity is already in the list, skip
+    for (int i = 0; i < m_allAvailableEntities.length(); i++) {
+        if (m_allAvailableEntities[i].toMap().value("entity_id").toString() == entity_id) {
+            return false;
+        }
+    }
+
     if (m_entities->supportedEntities().contains(type)) {
         QVariantMap entity;
         entity.insert("entity_id", entity_id);
