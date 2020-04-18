@@ -59,11 +59,13 @@ class Integration : public QObject, public IntegrationInterface {
 
     Q_PROPERTY(int state READ state NOTIFY stateChanged)
 
-    Q_INVOKABLE void connect()    = 0;                                             // Must be implemented by integration
-    Q_INVOKABLE void disconnect() = 0;                                             // Must be implemented by integration
-    void             enterStandby() {}                                             // Can be overriden by integration
-    void             leaveStandby() {}                                             // Can be overriden by integration
-    QVariantList     getAllAvailableEntities() { return m_allAvailableEntities; }  // Can be overriden by integration
+    Q_INVOKABLE void connect()    = 0;  // Must be implemented by integration
+    Q_INVOKABLE void disconnect() = 0;  // Must be implemented by integration
+    void             enterStandby() {}  // Can be overriden by integration
+    void             leaveStandby() {}  // Can be overriden by integration
+    QVariantList     getAllAvailableEntities() { return m_allAvailableEntities; }
+    bool             addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
+                                        const QString& friendly_name, const QStringList& supported_features);
     Q_INVOKABLE void sendCommand(const QString& type, const QString& entity_id, int command, const QVariant& param) = 0;
 
     // get the state
@@ -101,8 +103,4 @@ class Integration : public QObject, public IntegrationInterface {
     ConfigInterface*        m_config;
     QLoggingCategory&       m_logCategory;
     QVariantList            m_allAvailableEntities;
-    /// containts QVariantMap objects with the following keys
-    /// "entity_id": entity id
-    /// "type": type of entity, like light
-    /// "integration_id": id of the integration controlling the entity
 };

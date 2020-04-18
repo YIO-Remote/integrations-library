@@ -21,19 +21,20 @@
  *****************************************************************************/
 
 #include "integration.h"
+#include
 
-const QString Integration::KEY_ID = CFG_KEY_ID;
-const QString Integration::KEY_FRIENDLYNAME = CFG_KEY_FRIENDLYNAME;
-const QString Integration::KEY_ENTITY_ID = CFG_KEY_ENTITY_ID;
-const QString Integration::KEY_AREA = CFG_KEY_AREA;
-const QString Integration::KEY_INTEGRATION = CFG_KEY_INTEGRATION;
+const QString Integration::KEY_ID                 = CFG_KEY_ID;
+const QString Integration::KEY_FRIENDLYNAME       = CFG_KEY_FRIENDLYNAME;
+const QString Integration::KEY_ENTITY_ID          = CFG_KEY_ENTITY_ID;
+const QString Integration::KEY_AREA               = CFG_KEY_AREA;
+const QString Integration::KEY_INTEGRATION        = CFG_KEY_INTEGRATION;
 const QString Integration::KEY_SUPPORTED_FEATURES = CFG_KEY_SUPPORTED_FEATURES;
-const QString Integration::KEY_TYPE = CFG_KEY_TYPE;
-const QString Integration::KEY_MDNS = CFG_KEY_MDNS;
-const QString Integration::KEY_WORKERTHREAD = CFG_KEY_WORKERTHREAD;
-const QString Integration::OBJ_DATA = CFG_OBJ_DATA;
-const QString Integration::KEY_DATA_IP = CFG_KEY_DATA_IP;
-const QString Integration::KEY_DATA_TOKEN = CFG_KEY_DATA_TOKEN;
+const QString Integration::KEY_TYPE               = CFG_KEY_TYPE;
+const QString Integration::KEY_MDNS               = CFG_KEY_MDNS;
+const QString Integration::KEY_WORKERTHREAD       = CFG_KEY_WORKERTHREAD;
+const QString Integration::OBJ_DATA               = CFG_OBJ_DATA;
+const QString Integration::KEY_DATA_IP            = CFG_KEY_DATA_IP;
+const QString Integration::KEY_DATA_TOKEN         = CFG_KEY_DATA_TOKEN;
 
 IntegrationInterface::~IntegrationInterface() {}
 
@@ -68,6 +69,23 @@ Integration::Integration(Plugin* plugin)
       m_logCategory(plugin->m_logCategory) {}
 
 Integration::~Integration() {}
+
+bool Integration::addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
+                                     const QString& friendly_name, const QStringList& supported_features) {
+    if (m_entities->supported_entities().contains(type)) {
+        QVariantMap entity;
+        entity.insert("entity_id", entity_id);
+        entity.insert("type", type);
+        entity.insert("integration", integration);
+        entity.insert("friendly_name", friendly_name);
+        entity.insert("supported_features", supported_features);
+        m_allAvailableEntities.append(entity);
+        return true;
+    } else {
+        // return false if the type is not supported
+        return false;
+    }
+}
 
 void Integration::setState(int state) {
     if (state == m_state) {

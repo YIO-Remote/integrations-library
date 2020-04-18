@@ -61,6 +61,17 @@ class IntegrationInterface {
 
     /**
      * @brief sendCommand Must be implemented as Q_INVOKABLE
+     * @param entity_id
+     * @param type
+     * @param integration
+     * @param friendly_name
+     * @param supported_features
+     */
+    virtual bool addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
+                                    const QString& friendly_name, const QStringList& supported_features) = 0;
+
+    /**
+     * @brief sendCommand Must be implemented as Q_INVOKABLE
      * @param type
      * @param entity_id
      * @param command
