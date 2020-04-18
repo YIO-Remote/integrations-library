@@ -78,7 +78,7 @@ bool Integration::addAvailableEntity(const QString& entity_id, const QString& ty
         }
     }
 
-    if (m_entities->supportedEntities().contains(type)) {
+    if (m_entities->isSupportedEntityType(type)) {
         QVariantMap entity;
         entity.insert("entity_id", entity_id);
         entity.insert("type", type);
