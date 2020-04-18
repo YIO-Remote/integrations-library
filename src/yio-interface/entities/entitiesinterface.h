@@ -51,6 +51,9 @@ class EntitiesInterface {
 
     // get a list of supported entities
     virtual QStringList supportedEntities() = 0;
+
+    // checks if a type is supported
+    virtual bool isSupportedEntityType(const QString& type) = 0;
 };
 
 QT_BEGIN_NAMESPACE
