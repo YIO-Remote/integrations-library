@@ -69,22 +69,22 @@ Integration::Integration(Plugin* plugin)
 
 Integration::~Integration() {}
 
-bool Integration::addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
-                                     const QString& friendly_name, const QStringList& supported_features) {
+bool Integration::addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+                                     const QString& friendlyName, const QStringList& supportedFeatures) {
     // if the entity is already in the list, skip
     for (int i = 0; i < m_allAvailableEntities.length(); i++) {
-        if (m_allAvailableEntities[i].toMap().value("entity_id").toString() == entity_id) {
+        if (m_allAvailableEntities[i].toMap().value(Integration::KEY_ENTITY_ID).toString() == entityId) {
             return false;
         }
     }
 
     if (m_entities->isSupportedEntityType(type)) {
         QVariantMap entity;
-        entity.insert("entity_id", entity_id);
-        entity.insert("type", type);
-        entity.insert("integration", integration);
-        entity.insert("friendly_name", friendly_name);
-        entity.insert("supported_features", supported_features);
+        entity.insert(Integration::KEY_ENTITY_ID, entityId);
+        entity.insert(Integration::KEY_TYPE, type);
+        entity.insert(Integration::KEY_INTEGRATION, integration);
+        entity.insert(Integration::KEY_FRIENDLYNAME, friendlyName);
+        entity.insert(Integration::KEY_SUPPORTED_FEATURES, supportedFeatures);
         m_allAvailableEntities.append(entity);
         return true;
     } else {

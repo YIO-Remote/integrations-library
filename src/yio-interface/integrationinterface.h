@@ -56,6 +56,8 @@ class IntegrationInterface {
 
     /**
      * @brief getAllAvailableEntities Can be implemented by integration
+     * @returns list of QVariantMap
+     * https://github.com/YIO-Remote/documentation/wiki/developer-API-remote#get-available-entities-json-of-loaded-entities
      */
     virtual QVariantList getAllAvailableEntities() = 0;
 

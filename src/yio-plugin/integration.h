@@ -64,8 +64,8 @@ class Integration : public QObject, public IntegrationInterface {
     void             enterStandby() {}  // Can be overriden by integration
     void             leaveStandby() {}  // Can be overriden by integration
     QVariantList     getAllAvailableEntities() { return m_allAvailableEntities; }
-    bool             addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
-                                        const QString& friendly_name, const QStringList& supported_features);
+    bool             addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+                                        const QString& friendlyName, const QStringList& supportedFeatures);
     Q_INVOKABLE void sendCommand(const QString& type, const QString& entity_id, int command, const QVariant& param) = 0;
 
     // get the state
