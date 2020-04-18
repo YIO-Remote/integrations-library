@@ -50,7 +50,7 @@ class EntitiesInterface {
     virtual EntityInterface* getEntityInterface(const QString& entity_id) = 0;
 
     // get a list of supported entities
-    virtual QStringList supported_entities() = 0;
+    virtual QStringList supportedEntities() = 0;
 };
 
 QT_BEGIN_NAMESPACE

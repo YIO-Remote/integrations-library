@@ -21,7 +21,6 @@
  *****************************************************************************/
 
 #include "integration.h"
-#include
 
 const QString Integration::KEY_ID                 = CFG_KEY_ID;
 const QString Integration::KEY_FRIENDLYNAME       = CFG_KEY_FRIENDLYNAME;
@@ -72,7 +71,7 @@ Integration::~Integration() {}
 
 bool Integration::addAvailableEntity(const QString& entity_id, const QString& type, const QString& integration,
                                      const QString& friendly_name, const QStringList& supported_features) {
-    if (m_entities->supported_entities().contains(type)) {
+    if (m_entities->supportedEntities().contains(type)) {
         QVariantMap entity;
         entity.insert("entity_id", entity_id);
         entity.insert("type", type);
