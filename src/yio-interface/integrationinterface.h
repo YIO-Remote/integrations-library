@@ -63,11 +63,11 @@ class IntegrationInterface {
 
     /**
      * @brief sendCommand Must be implemented as Q_INVOKABLE
-     * @param entity_id
+     * @param entityId
      * @param type
      * @param integration
-     * @param friendly_name
-     * @param supported_features
+     * @param friendlyName
+     * @param supportedFeatures
      */
     virtual bool addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
                                     const QString& friendlyName, const QStringList& supportedFeatures) = 0;
@@ -75,11 +75,11 @@ class IntegrationInterface {
     /**
      * @brief sendCommand Must be implemented as Q_INVOKABLE
      * @param type
-     * @param entity_id
+     * @param entityId
      * @param command
      * @param param
      */
-    virtual void sendCommand(const QString& type, const QString& entity_id, int command, const QVariant& param) = 0;
+    virtual void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) = 0;
 
     /**
      * @brief state Returns the current state. See States enum definition.

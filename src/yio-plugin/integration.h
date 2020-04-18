@@ -66,7 +66,7 @@ class Integration : public QObject, public IntegrationInterface {
     QVariantList     getAllAvailableEntities() override { return m_allAvailableEntities; }
     bool             addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
                                         const QString& friendlyName, const QStringList& supportedFeatures) override;
-    Q_INVOKABLE void sendCommand(const QString& type, const QString& entity_id, int command,
+    Q_INVOKABLE void sendCommand(const QString& type, const QString& entityId, int command,
                                  const QVariant& param) override = 0;
 
     // get the state
