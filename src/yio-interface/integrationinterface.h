@@ -35,34 +35,15 @@ class IntegrationInterface {
     virtual ~IntegrationInterface();
 
     /**
-     * @brief connect Must be implemented by integration as Q_INVOKABLE
-     */
-    virtual void connect() = 0;
-
-    /**
-     * @brief disconnect Must be implemented by integration as Q_INVOKABLE
-     */
-    virtual void disconnect() = 0;
-
-    /**
-     * @brief enterStandby Can be implemented by integration as Q_INVOKABLE
-     */
-    virtual void enterStandby() = 0;
-
-    /**
-     * @brief leaveStandby Can be implemented by integration as Q_INVOKABLE
-     */
-    virtual void leaveStandby() = 0;
-
-    /**
      * @brief getAllAvailableEntities Can be implemented by integration
      * @returns list of QVariantMap
+     * @details
      * https://github.com/YIO-Remote/documentation/wiki/developer-API-remote#get-available-entities-json-of-loaded-entities
      */
     virtual QVariantList getAllAvailableEntities() = 0;
 
     /**
-     * @brief sendCommand Must be implemented as Q_INVOKABLE
+     * @brief addAvailableEntity
      * @param entityId
      * @param type
      * @param integration
@@ -73,7 +54,7 @@ class IntegrationInterface {
                                     const QString& friendlyName, const QStringList& supportedFeatures) = 0;
 
     /**
-     * @brief sendCommand Must be implemented as Q_INVOKABLE
+     * @brief sendCommand Must be implemented
      * @param type
      * @param entityId
      * @param command
@@ -98,6 +79,27 @@ class IntegrationInterface {
      * @details A Q_PROPERTY must be implemented with this method as READ accessor.
      */
     virtual QString friendlyName() = 0;
+
+ public slots:
+    /**
+     * @brief connect Must be implemented by integration
+     */
+    virtual void connect() = 0;
+
+    /**
+     * @brief disconnect Must be implemented by integration
+     */
+    virtual void disconnect() = 0;
+
+    /**
+     * @brief enterStandby Can be implemented by integration
+     */
+    virtual void enterStandby() = 0;
+
+    /**
+     * @brief leaveStandby Can be implemented by integration
+     */
+    virtual void leaveStandby() = 0;
 };
 
 QT_BEGIN_NAMESPACE

@@ -59,15 +59,10 @@ class Integration : public QObject, public IntegrationInterface {
 
     Q_PROPERTY(int state READ state NOTIFY stateChanged)
 
-    Q_INVOKABLE void connect() override    = 0;  // Must be implemented by integration
-    Q_INVOKABLE void disconnect() override = 0;  // Must be implemented by integration
-    void             enterStandby() override {}  // Can be overriden by integration
-    void             leaveStandby() override {}  // Can be overriden by integration
-    QVariantList     getAllAvailableEntities() override { return m_allAvailableEntities; }
-    bool             addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
-                                        const QString& friendlyName, const QStringList& supportedFeatures) override;
-    Q_INVOKABLE void sendCommand(const QString& type, const QString& entityId, int command,
-                                 const QVariant& param) override = 0;
+    QVariantList getAllAvailableEntities() override { return m_allAvailableEntities; }
+    bool         addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+                                    const QString& friendlyName, const QStringList& supportedFeatures) override;
+    void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override = 0;
 
     // get the state
     int state() override { return m_state; }
@@ -92,6 +87,12 @@ class Integration : public QObject, public IntegrationInterface {
     void connecting();
     void disconnected();
     void stateChanged();
+
+ public slots:
+    void connect() override    = 0;  // Must be implemented by integration
+    void disconnect() override = 0;  // Must be implemented by integration
+    void enterStandby() override {}  // Can be overriden by integration
+    void leaveStandby() override {}  // Can be overriden by integration
 
  protected:
     int                     m_state;

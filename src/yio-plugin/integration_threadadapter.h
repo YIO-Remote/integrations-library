@@ -42,18 +42,18 @@ class IntegrationThreadAdapter : public Integration {
     ~IntegrationThreadAdapter() override;
 
  public slots:  // NOLINT open issue: https://github.com/cpplint/cpplint/pull/99
+    void connect() override;
+    void disconnect() override;
+    void enterStandby() override;
+    void leaveStandby() override;
+
     // set the state
     void onStateChanged();
 
     // IntegrationInterface
  public:
-    Q_INVOKABLE void connect() override;
-    Q_INVOKABLE void disconnect() override;
-    void             enterStandby() override;
-    void             leaveStandby() override;
-    QVariantList     getAllAvailableEntities() override;
-    Q_INVOKABLE void sendCommand(const QString& type, const QString& entityId, int command,
-                                 const QVariant& param) override;
+    QVariantList getAllAvailableEntities() override;
+    void         sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override;
 
  signals:
     void connectSignal();
