@@ -80,7 +80,7 @@ class IntegrationInterface {
      */
     virtual QString friendlyName() = 0;
 
- public slots:
+ public slots:  // NOLINT open issue: https://github.com/cpplint/cpplint/pull/99
     /**
      * @brief connect Must be implemented by integration
      */
