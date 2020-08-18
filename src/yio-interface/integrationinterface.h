@@ -54,6 +54,18 @@ class IntegrationInterface {
                                     const QString& friendlyName, const QStringList& supportedFeatures) = 0;
 
     /**
+     * @brief addAvailableEntity
+     * @param entityId
+     * @param type
+     * @param integration
+     * @param friendlyName
+     * @param supportedFeatures
+     * @param customFeatures
+     */
+    virtual bool addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+                                    const QString& friendlyName, const QStringList& supportedFeatures, const QStringList& customFeatures) = 0;
+
+    /**
      * @brief sendCommand Must be implemented
      * @param type
      * @param entityId
@@ -61,6 +73,14 @@ class IntegrationInterface {
      * @param param
      */
     virtual void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) = 0;
+
+    /**
+     * @param type
+     * @param entityId
+     * @param command
+     * @param param
+     */
+    virtual void sendCustomCommand(const QString& type, const QString& entityId, int commandIndex, const QVariant& param) = 0;
 
     /**
      * @brief state Returns the current state. See States enum definition.
