@@ -65,7 +65,7 @@ class Integration : public QObject, public IntegrationInterface {
     QVariantList getAllAvailableEntities() override { return m_allAvailableEntities; }
     bool         addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
                                     const QString& friendlyName, const QStringList& supportedFeatures) override;
-    bool         addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+    bool         addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type, const QString& integration,
                                     const QString& friendlyName, const QStringList& supportedFeatures, const QStringList& customFeatures) override;
     void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override = 0;
     void sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override {};

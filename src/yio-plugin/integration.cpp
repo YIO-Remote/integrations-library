@@ -21,6 +21,7 @@
  *****************************************************************************/
 
 #include "integration.h"
+#include <QDebug>
 
 const QString Integration::KEY_ID                 = CFG_KEY_ID;
 const QString Integration::KEY_FRIENDLYNAME       = CFG_KEY_FRIENDLYNAME;
@@ -73,10 +74,10 @@ Integration::Integration(Plugin* plugin)
 Integration::~Integration() {}
 
 bool Integration::addAvailableEntity(const QString &entityId, const QString &type, const QString &integration, const QString &friendlyName, const QStringList &supportedFeatures) {
-    return addAvailableEntity(entityId, type, integration, friendlyName, supportedFeatures, QStringList());
+    return addAvailableEntityWithCustomFeatures(entityId, type, integration, friendlyName, supportedFeatures, QStringList());
 }
 
-bool Integration::addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+bool Integration::addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type, const QString& integration,
                                      const QString& friendlyName, const QStringList& supportedFeatures, const QStringList& customFeatures) {
     // if the entity is already in the list, skip
     for (int i = 0; i < m_allAvailableEntities.length(); i++) {
@@ -93,6 +94,7 @@ bool Integration::addAvailableEntity(const QString& entityId, const QString& typ
         entity.insert(Integration::KEY_FRIENDLYNAME, friendlyName);
         entity.insert(Integration::KEY_SUPPORTED_FEATURES, supportedFeatures);
         if (customFeatures.size() > 0) {
+            qWarning() << "adding custom features:" << customFeatures;
             entity.insert(Integration::KEY_CUSTOM_FEATURES, customFeatures);
         }
         m_allAvailableEntities.append(entity);

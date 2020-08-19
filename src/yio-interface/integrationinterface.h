@@ -62,7 +62,7 @@ class IntegrationInterface {
      * @param supportedFeatures
      * @param customFeatures
      */
-    virtual bool addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+    virtual bool addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type, const QString& integration,
                                     const QString& friendlyName, const QStringList& supportedFeatures, const QStringList& customFeatures) = 0;
 
     /**
