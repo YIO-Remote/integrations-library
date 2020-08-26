@@ -134,3 +134,7 @@ void Integration::setState(int state) {
             break;
     }
 }
+
+void Integration::sendCustomCommand(const QString &type, const QString &entityId, int command, const QVariant &param) {
+    qWarning() << "send custom command not implemented";
+}
