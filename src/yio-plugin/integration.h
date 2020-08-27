@@ -65,8 +65,9 @@ class Integration : public QObject, public IntegrationInterface {
     QVariantList getAllAvailableEntities() override { return m_allAvailableEntities; }
     bool         addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
                                     const QString& friendlyName, const QStringList& supportedFeatures) override;
-    bool         addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type, const QString& integration,
-                                    const QString& friendlyName, const QStringList& supportedFeatures, const QStringList& customFeatures) override;
+    bool addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type, const QString& integration,
+                                              const QString& friendlyName, const QStringList& supportedFeatures,
+                                              const QStringList& customFeatures) override;
     void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override = 0;
     void sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override;
 
@@ -95,7 +96,7 @@ class Integration : public QObject, public IntegrationInterface {
     void stateChanged();
 
  public slots:                       // NOLINT open issue: https://github.com/cpplint/cpplint/pull/99
-    void connect() override    = 0;  // Must be implemented by integration
+    void connect() override = 0;     // Must be implemented by integration
     void disconnect() override = 0;  // Must be implemented by integration
     void enterStandby() override {}  // Can be overriden by integration
     void leaveStandby() override {}  // Can be overriden by integration

@@ -37,7 +37,8 @@ IntegrationThreadAdapter::IntegrationThreadAdapter(Integration& integration, Plu
     QObject::connect(this, &IntegrationThreadAdapter::enterStandbySignal, &integration, &Integration::enterStandby);
     QObject::connect(this, &IntegrationThreadAdapter::leaveStandbySignal, &integration, &Integration::leaveStandby);
     QObject::connect(this, &IntegrationThreadAdapter::sendCommandSignal, &integration, &Integration::sendCommand);
-    QObject::connect(this, &IntegrationThreadAdapter::sendCustomCommandSignal, &integration, &Integration::sendCustomCommand);
+    QObject::connect(this, &IntegrationThreadAdapter::sendCustomCommandSignal, &integration,
+                     &Integration::sendCustomCommand);
 
     QObject::connect(&integration, &Integration::stateChanged, this, &IntegrationThreadAdapter::onStateChanged);
 
@@ -83,7 +84,7 @@ void IntegrationThreadAdapter::sendCommand(const QString& type, const QString& e
 }
 
 void IntegrationThreadAdapter::sendCustomCommand(const QString& type, const QString& entityId, int command,
-                                           const QVariant& param) {
+                                                 const QVariant& param) {
     qCDebug(m_logCategory) << "ThreadAdapter sendCustomCommand" << type << entityId << command << param;
     emit sendCustomCommandSignal(type, entityId, command, param);
 }

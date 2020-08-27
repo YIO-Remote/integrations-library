@@ -21,8 +21,10 @@
  *****************************************************************************/
 
 #include "integration.h"
+
 #include <QDebug>
 
+// clang-format off
 const QString Integration::KEY_ID                 = CFG_KEY_ID;
 const QString Integration::KEY_FRIENDLYNAME       = CFG_KEY_FRIENDLYNAME;
 const QString Integration::KEY_ENTITY_ID          = CFG_KEY_ENTITY_ID;
@@ -38,6 +40,7 @@ const QString Integration::KEY_DATA_IP            = CFG_KEY_DATA_IP;
 const QString Integration::KEY_DATA_TOKEN         = CFG_KEY_DATA_TOKEN;
 const QString Integration::KEY_DATA_SSL           = CFG_KEY_DATA_SSL;
 const QString Integration::KEY_DATA_SSL_IGNORE    = CFG_KEY_DATA_SSL_IGNORE;
+// clang-format on
 
 IntegrationInterface::~IntegrationInterface() {}
 
@@ -73,12 +76,16 @@ Integration::Integration(Plugin* plugin)
 
 Integration::~Integration() {}
 
-bool Integration::addAvailableEntity(const QString &entityId, const QString &type, const QString &integration, const QString &friendlyName, const QStringList &supportedFeatures) {
-    return addAvailableEntityWithCustomFeatures(entityId, type, integration, friendlyName, supportedFeatures, QStringList());
+bool Integration::addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
+                                     const QString& friendlyName, const QStringList& supportedFeatures) {
+    return addAvailableEntityWithCustomFeatures(entityId, type, integration, friendlyName, supportedFeatures,
+                                                QStringList());
 }
 
-bool Integration::addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type, const QString& integration,
-                                     const QString& friendlyName, const QStringList& supportedFeatures, const QStringList& customFeatures) {
+bool Integration::addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type,
+                                                       const QString& integration, const QString& friendlyName,
+                                                       const QStringList& supportedFeatures,
+                                                       const QStringList& customFeatures) {
     // if the entity is already in the list, skip
     for (int i = 0; i < m_allAvailableEntities.length(); i++) {
         if (m_allAvailableEntities[i].toMap().value(Integration::KEY_ENTITY_ID).toString() == entityId) {
@@ -135,6 +142,6 @@ void Integration::setState(int state) {
     }
 }
 
-void Integration::sendCustomCommand(const QString &type, const QString &entityId, int command, const QVariant &param) {
+void Integration::sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) {
     qWarning() << "send custom command not implemented";
 }
