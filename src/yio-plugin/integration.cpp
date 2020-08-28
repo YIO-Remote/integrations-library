@@ -101,7 +101,6 @@ bool Integration::addAvailableEntityWithCustomFeatures(const QString& entityId, 
         entity.insert(Integration::KEY_FRIENDLYNAME, friendlyName);
         entity.insert(Integration::KEY_SUPPORTED_FEATURES, supportedFeatures);
         if (customFeatures.size() > 0) {
-            qWarning() << "adding custom features:" << customFeatures;
             entity.insert(Integration::KEY_CUSTOM_FEATURES, customFeatures);
         }
         m_allAvailableEntities.append(entity);
