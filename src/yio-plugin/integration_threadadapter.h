@@ -54,7 +54,6 @@ class IntegrationThreadAdapter : public Integration {
  public:
     QVariantList getAllAvailableEntities() override;
     void         sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override;
-    void sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override;
 
  signals:
     void connectSignal();
@@ -62,7 +61,6 @@ class IntegrationThreadAdapter : public Integration {
     void enterStandbySignal();
     void leaveStandbySignal();
     void sendCommandSignal(const QString& type, const QString& entityId, int command, const QVariant& param);
-    void sendCustomCommandSignal(const QString& type, const QString& entityId, int command, const QVariant& param);
 
  private:
     Integration& m_integration;

@@ -67,7 +67,6 @@ class Integration : public QObject, public IntegrationInterface {
                                     const QString& friendlyName, const QStringList& supportedFeatures,
                                     const QStringList& customFeatures = QStringList()) override;
     void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override = 0;
-    void sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override;
 
     // get the state
     int state() override { return m_state; }

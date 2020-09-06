@@ -133,7 +133,3 @@ void Integration::setState(int state) {
             break;
     }
 }
-
-void Integration::sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) {
-    qCWarning(m_logCategory) << "send custom command not implemented";
-}

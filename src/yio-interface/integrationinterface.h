@@ -64,15 +64,6 @@ class IntegrationInterface {
     virtual void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) = 0;
 
     /**
-     * @param type
-     * @param entityId
-     * @param command
-     * @param param
-     */
-    virtual void sendCustomCommand(const QString& type, const QString& entityId, int commandIndex,
-                                   const QVariant& param) = 0;
-
-    /**
      * @brief state Returns the current state. See States enum definition.
      * @details A Q_PROPERTY must be implemented with this method as READ accessor.
      */
