@@ -77,15 +77,8 @@ Integration::Integration(Plugin* plugin)
 Integration::~Integration() {}
 
 bool Integration::addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
-                                     const QString& friendlyName, const QStringList& supportedFeatures) {
-    return addAvailableEntityWithCustomFeatures(entityId, type, integration, friendlyName, supportedFeatures,
-                                                QStringList());
-}
-
-bool Integration::addAvailableEntityWithCustomFeatures(const QString& entityId, const QString& type,
-                                                       const QString& integration, const QString& friendlyName,
-                                                       const QStringList& supportedFeatures,
-                                                       const QStringList& customFeatures) {
+                                     const QString& friendlyName, const QStringList& supportedFeatures,
+                                     const QStringList& customFeatures) {
     // if the entity is already in the list, skip
     for (int i = 0; i < m_allAvailableEntities.length(); i++) {
         if (m_allAvailableEntities[i].toMap().value(Integration::KEY_ENTITY_ID).toString() == entityId) {
@@ -142,5 +135,5 @@ void Integration::setState(int state) {
 }
 
 void Integration::sendCustomCommand(const QString& type, const QString& entityId, int command, const QVariant& param) {
-    qWarning() << "send custom command not implemented";
+    qCWarning(m_logCategory) << "send custom command not implemented";
 }
