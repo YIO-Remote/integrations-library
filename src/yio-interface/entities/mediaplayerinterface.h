@@ -78,7 +78,8 @@ class MediaPlayerDef : public QObject {
         F_VOLUME_SET,
         F_VOLUME_UP,
         F_LIST,
-        F_SPEAKER_CONTROL
+        F_SPEAKER_CONTROL,
+        F_TVCHANNELLIST
     };
     Q_ENUM(Features)
 
@@ -100,6 +101,7 @@ class MediaPlayerDef : public QObject {
         C_PLAY_ITEM,
         C_GETALBUM,
         C_GETPLAYLIST,
+        C_GETTVCHANNELLIST,
         C_QUEUE
     };
     Q_ENUM(Commands)
