@@ -117,7 +117,7 @@ class MediaPlayerDef : public QObject {
         C_MUTE,
         C_BROWSE,
         C_SEARCH,
-        C_MEDIAPLAYERCOMMAND,
+        C_MEDIAPLAYERTEXTINPUT,
         C_SEARCH_ITEM,
         C_PLAY_ITEM,
         C_GETALBUM,
