@@ -93,9 +93,9 @@ class BrowsetvchannelModel : public QObject {
     Q_PROPERTY(QStringList commands READ commands NOTIFY commandsChanged)
 
  public:
-    BrowsetvchannelModel(QObject* parent = nullptr, const QString& id = "", const QString& time = "", const QString& title = "",
-                const QString& subtitle = "", const QString& type = "", const QString& imageUrl = "",
-                const QStringList& commands = {})
+    BrowsetvchannelModel(QObject* parent = nullptr, const QString& id = "", const QString& time = "",
+                         const QString& title = "", const QString& subtitle = "", const QString& type = "",
+                         const QString& imageUrl = "", const QStringList& commands = {})
         : m_id(id), m_time(time), m_title(title), m_subtitle(subtitle), m_type(type), m_imageUrl(imageUrl), m_commands(commands) {
         Q_UNUSED(parent)
     }
@@ -110,8 +110,8 @@ class BrowsetvchannelModel : public QObject {
     QObject*    model() { return m_model; }
     QStringList commands() { return m_commands; }
 
-    void addtvchannelItem(const QString& key, const QString& time, const QString& title, const QString& subtitle, const QString& type,
-                 const QString& imageUrl, const QVariant& commands);
+    void addtvchannelItem(const QString& key, const QString& time, const QString& title, const QString& subtitle,
+                          const QString& type, const QString& imageUrl, const QVariant& commands);
 
  signals:
     void idChanged();
