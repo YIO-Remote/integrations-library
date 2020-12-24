@@ -83,7 +83,8 @@ void ListtvchannelModel::setCount(int count) {
     emit countChanged(m_count);
 }
 
-void BrowsetvchannelModel::addtvchannelItem(const QString &key, const QString &time, const QString &title, const QString &subtitle, const QString &type,
+void BrowsetvchannelModel::addtvchannelItem(const QString &key, const QString &time,
+                                            const QString &title, const QString &subtitle, const QString &type,
                           const QString &imageUrl, const QVariant &commands) {
     ListtvchannelModel *model = static_cast<ListtvchannelModel *>(m_model);
     tvchannelModelItem  item = tvchannelModelItem(key, time, title, subtitle, type, imageUrl, commands);

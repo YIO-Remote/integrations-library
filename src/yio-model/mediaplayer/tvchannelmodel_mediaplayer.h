@@ -29,9 +29,11 @@
 
 class tvchannelModelItem {
  public:
-    tvchannelModelItem(const QString& key, const QString& time, const QString& title, const QString& subtitle, const QString& type,
+    tvchannelModelItem(const QString& key, const QString& time, const QString& title,
+                       const QString& subtitle, const QString& type,
               const QString& imageUrl, const QVariant& commands)
-        : m_key(key), m_time(time), m_title(title), m_subtitle(subtitle), m_type(type), m_imageUrl(imageUrl), m_commands(commands) {}
+        : m_key(key), m_time(time), m_title(title), m_subtitle(subtitle),
+          m_type(type), m_imageUrl(imageUrl), m_commands(commands) {}
 
     QString  item_key() const { return m_key; }
     QString  item_time() const { return m_time; }
@@ -56,7 +58,8 @@ class ListtvchannelModel : public QAbstractListModel {
     Q_PROPERTY(int count READ count WRITE setCount NOTIFY countChanged)
 
  public:
-    enum SearchRoles { KeyRole = Qt::UserRole + 1, TimeRole, TitleRole, SubTitleRole, TypeRole, ImageUrlRole, CommandsRole };
+    enum SearchRoles { KeyRole = Qt::UserRole + 1, TimeRole, TitleRole, SubTitleRole,
+                       TypeRole, ImageUrlRole, CommandsRole };
 
     explicit ListtvchannelModel(QObject* parent = nullptr);
     ~ListtvchannelModel() {}
