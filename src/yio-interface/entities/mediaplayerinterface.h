@@ -77,11 +77,11 @@ class MediaPlayerDef : public QObject {
         F_VOLUME_DOWN,
         F_VOLUME_SET,
         F_VOLUME_UP,
-        F_CURSOR_UP,
-        F_CURSOR_DOWN,
-        F_CURSOR_LEFT,
-        F_CURSOR_RIGHT,
-        F_CURSOR_OK,
+        F_UP,
+        F_DOWN,
+        F_LEFT,
+        F_RIGHT,
+        F_OK,
         F_CHANNEL_UP,
         F_CHANNEL_DOWN,
         F_BACK,
@@ -89,7 +89,8 @@ class MediaPlayerDef : public QObject {
         F_LIST,
         F_SPEAKER_CONTROL,
         F_TVCHANNELLIST,
-        F_MEDIAPLAYERREMOTE
+        F_MEDIAPLAYERREMOTE,
+        F_MEDIAPLAYEREPGVIEW
     };
     Q_ENUM(Features)
 
@@ -104,11 +105,11 @@ class MediaPlayerDef : public QObject {
         C_VOLUME_SET,
         C_VOLUME_UP,
         C_VOLUME_DOWN,
-        C_CURSOR_UP,
-        C_CURSOR_DOWN,
-        C_CURSOR_LEFT,
-        C_CURSOR_RIGHT,
-        C_CURSOR_OK,
+        C_UP,
+        C_DOWN,
+        C_LEFT,
+        C_RIGHT,
+        C_OK,
         C_MENU,
         C_CHANNEL_UP,
         C_CHANNEL_DOWN,
@@ -122,6 +123,7 @@ class MediaPlayerDef : public QObject {
         C_GETPLAYLIST,
         C_GETTVCHANNELLIST,
         C_GETMEDIAPLAYERREMOTE,
+        C_GETMEDIAPLAYEREPGVIEW,
         C_QUEUE
     };
     Q_ENUM(Commands)
