@@ -93,9 +93,9 @@ class BrowseTvChannelModel : public QObject {
     Q_PROPERTY(QStringList commands READ commands NOTIFY commandsChanged)
 
  public:
-    BrowseTvChannelModel(QObject* parent = nullptr, const QString& id = "", const QString& time = "",
-                         const QString& title = "", const QString& subtitle = "", const QString& type = "",
-                         const QString& imageUrl = "", const QStringList& commands = {})
+    BrowseTvChannelModel(const QString& id, const QString& time,
+                         const QString& title, const QString& subtitle, const QString& type,
+                         const QString& imageUrl, const QStringList& commands = {}, QObject* parent = nullptr)
         : m_id(id), m_time(time), m_title(title), m_subtitle(subtitle), m_type(type),
           m_imageUrl(imageUrl), m_commands(commands) {
         Q_UNUSED(parent)
