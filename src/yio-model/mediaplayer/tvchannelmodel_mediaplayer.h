@@ -27,21 +27,21 @@
 #include <QVariant>
 #include <QtDebug>
 
-class tvchannelModelItem {
+class TvChannelModelItem {
  public:
-    tvchannelModelItem(const QString& key, const QString& time, const QString& title,
+    TvChannelModelItem(const QString& key, const QString& time, const QString& title,
                        const QString& subtitle, const QString& type,
               const QString& imageUrl, const QVariant& commands)
         : m_key(key), m_time(time), m_title(title), m_subtitle(subtitle),
           m_type(type), m_imageUrl(imageUrl), m_commands(commands) {}
 
-    QString  item_key() const { return m_key; }
-    QString  item_time() const { return m_time; }
-    QString  item_title() const { return m_title; }
-    QString  item_subtitle() const { return m_subtitle; }
-    QString  item_type() const { return m_type; }
-    QString  item_imageUrl() const { return m_imageUrl; }
-    QVariant item_commands() const { return m_commands; }
+    QString  itemKey() const { return m_key; }
+    QString  itemTime() const { return m_time; }
+    QString  itemTitle() const { return m_title; }
+    QString  itemSubtitle() const { return m_subtitle; }
+    QString  itemType() const { return m_type; }
+    QString  itemImageUrl() const { return m_imageUrl; }
+    QVariant itemCommands() const { return m_commands; }
 
  private:
     QString  m_key;
@@ -53,7 +53,7 @@ class tvchannelModelItem {
     QVariant m_commands;
 };
 
-class ListtvchannelModel : public QAbstractListModel {
+class ListTvChannelModel : public QAbstractListModel {
     Q_OBJECT
     Q_PROPERTY(int count READ count WRITE setCount NOTIFY countChanged)
 
@@ -61,15 +61,15 @@ class ListtvchannelModel : public QAbstractListModel {
     enum SearchRoles { KeyRole = Qt::UserRole + 1, TimeRole, TitleRole, SubTitleRole,
                        TypeRole, ImageUrlRole, CommandsRole };
 
-    explicit ListtvchannelModel(QObject* parent = nullptr);
-    ~ListtvchannelModel() {}
+    explicit ListTvChannelModel(QObject* parent = nullptr);
+    ~ListTvChannelModel() {}
 
     int                    count() const;
     int                    rowCount(const QModelIndex& p = QModelIndex()) const;
     QVariant               data(const QModelIndex& index, int role = Qt::DisplayRole) const;
     QHash<int, QByteArray> roleNames() const;
 
-    void append(const tvchannelModelItem& o);
+    void append(const TvChannelModelItem& o);
 
  public slots:  // NOLINT open issue: https://github.com/cpplint/cpplint/pull/99
     void setCount(int count);
@@ -79,10 +79,10 @@ class ListtvchannelModel : public QAbstractListModel {
 
  private:
     int              m_count;
-    QList<tvchannelModelItem> m_data;
+    QList<TvChannelModelItem> m_data;
 };
 
-class BrowsetvchannelModel : public QObject {
+class BrowseTvChannelModel : public QObject {
     Q_OBJECT
     Q_PROPERTY(QString id READ id NOTIFY idChanged)
     Q_PROPERTY(QString title READ title NOTIFY titleChanged)
@@ -93,14 +93,14 @@ class BrowsetvchannelModel : public QObject {
     Q_PROPERTY(QStringList commands READ commands NOTIFY commandsChanged)
 
  public:
-    BrowsetvchannelModel(QObject* parent = nullptr, const QString& id = "", const QString& time = "",
+    BrowseTvChannelModel(QObject* parent = nullptr, const QString& id = "", const QString& time = "",
                          const QString& title = "", const QString& subtitle = "", const QString& type = "",
                          const QString& imageUrl = "", const QStringList& commands = {})
         : m_id(id), m_time(time), m_title(title), m_subtitle(subtitle), m_type(type),
           m_imageUrl(imageUrl), m_commands(commands) {
         Q_UNUSED(parent)
     }
-    ~BrowsetvchannelModel() {}
+    ~BrowseTvChannelModel() {}
 
     QString     id() { return m_id; }
     QString     time() { return m_time; }
@@ -130,6 +130,6 @@ class BrowsetvchannelModel : public QObject {
     QString     m_subtitle;
     QString     m_type;
     QString     m_imageUrl;
-    QObject*    m_model = new ListtvchannelModel();
+    QObject*    m_model = new ListTvChannelModel();
     QStringList m_commands;
 };

@@ -22,38 +22,38 @@
 
 #include "tvchannelmodel_mediaplayer.h"
 
-ListtvchannelModel::ListtvchannelModel(QObject *parent) : QAbstractListModel(parent), m_count(0) {}
+ListTvChannelModel::ListTvChannelModel(QObject *parent) : QAbstractListModel(parent), m_count(0) {}
 
-int ListtvchannelModel::count() const { return m_count; }
+int ListTvChannelModel::count() const { return m_count; }
 
-int ListtvchannelModel::rowCount(const QModelIndex &p) const {
+int ListTvChannelModel::rowCount(const QModelIndex &p) const {
     Q_UNUSED(p)
     return m_data.size();
 }
 
-QVariant ListtvchannelModel::data(const QModelIndex &index, int role) const {
+QVariant ListTvChannelModel::data(const QModelIndex &index, int role) const {
     if (index.row() < 0 || index.row() >= m_data.count()) return QVariant();
-    const tvchannelModelItem &item = m_data[index.row()];
+    const TvChannelModelItem &item = m_data[index.row()];
     switch (role) {
         case KeyRole:
-            return item.item_key();
+            return item.itemKey();
         case TimeRole:
-            return item.item_time();
+            return item.itemTime();
         case TitleRole:
-            return item.item_title();
+            return item.itemTitle();
         case SubTitleRole:
-            return item.item_subtitle();
+            return item.itemSubtitle();
         case TypeRole:
-            return item.item_type();
+            return item.itemType();
         case ImageUrlRole:
-            return item.item_imageUrl();
+            return item.itemImageUrl();
         case CommandsRole:
-            return item.item_commands();
+            return item.itemCommands();
     }
     return QVariant();
 }
 
-QHash<int, QByteArray> ListtvchannelModel::roleNames() const {
+QHash<int, QByteArray> ListTvChannelModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[KeyRole] = "item_key";
     roles[TimeRole] = "item_time";
@@ -65,7 +65,7 @@ QHash<int, QByteArray> ListtvchannelModel::roleNames() const {
     return roles;
 }
 
-void ListtvchannelModel::append(const tvchannelModelItem &o) {
+void ListTvChannelModel::append(const TvChannelModelItem &o) {
     int i = m_data.size();
     beginInsertRows(QModelIndex(), i, i);
     m_data.append(o);
@@ -76,18 +76,18 @@ void ListtvchannelModel::append(const tvchannelModelItem &o) {
     endInsertRows();
 }
 
-void ListtvchannelModel::setCount(int count) {
+void ListTvChannelModel::setCount(int count) {
     if (m_count == count) return;
 
     m_count = count;
     emit countChanged(m_count);
 }
 
-void BrowsetvchannelModel::addtvchannelItem(const QString &key, const QString &time,
+void BrowseTvChannelModel::addtvchannelItem(const QString &key, const QString &time,
                                             const QString &title, const QString &subtitle, const QString &type,
                           const QString &imageUrl, const QVariant &commands) {
-    ListtvchannelModel *model = static_cast<ListtvchannelModel *>(m_model);
-    tvchannelModelItem  item = tvchannelModelItem(key, time, title, subtitle, type, imageUrl, commands);
+    ListTvChannelModel *model = static_cast<ListTvChannelModel *>(m_model);
+    TvChannelModelItem  item = TvChannelModelItem(key, time, title, subtitle, type, imageUrl, commands);
     model->append(item);
     emit modelChanged();
 }
