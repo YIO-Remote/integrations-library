@@ -97,7 +97,7 @@ class BrowseTvChannelModel : public QObject {
                          const QString& title, const QString& subtitle, const QString& type,
                          const QString& imageUrl, const QStringList& commands = {}, QObject* parent = nullptr)
         : m_id(id), m_time(time), m_title(title), m_subtitle(subtitle), m_type(type),
-          m_imageUrl(imageUrl), m_commands(commands){}
+          m_imageUrl(imageUrl), m_commands(commands) {}
 
     ~BrowseTvChannelModel() {}
 
