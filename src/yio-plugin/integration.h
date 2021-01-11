@@ -50,6 +50,7 @@ class Integration : public QObject, public IntegrationInterface {
     static const QString KEY_WORKERTHREAD;
     static const QString OBJ_DATA;
     static const QString KEY_DATA_IP;
+    static const QString KEY_DATA_URL;
     static const QString KEY_DATA_TOKEN;
     static const QString KEY_DATA_SSL;
     static const QString KEY_DATA_SSL_IGNORE;

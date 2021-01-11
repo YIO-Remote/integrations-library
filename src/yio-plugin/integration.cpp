@@ -22,8 +22,6 @@
 
 #include "integration.h"
 
-#include <QDebug>
-
 // clang-format off
 const QString Integration::KEY_ID                 = CFG_KEY_ID;
 const QString Integration::KEY_FRIENDLYNAME       = CFG_KEY_FRIENDLYNAME;
@@ -37,6 +35,7 @@ const QString Integration::KEY_MDNS               = CFG_KEY_MDNS;
 const QString Integration::KEY_WORKERTHREAD       = CFG_KEY_WORKERTHREAD;
 const QString Integration::OBJ_DATA               = CFG_OBJ_DATA;
 const QString Integration::KEY_DATA_IP            = CFG_KEY_DATA_IP;
+const QString Integration::KEY_DATA_URL           = CFG_KEY_DATA_URL;
 const QString Integration::KEY_DATA_TOKEN         = CFG_KEY_DATA_TOKEN;
 const QString Integration::KEY_DATA_SSL           = CFG_KEY_DATA_SSL;
 const QString Integration::KEY_DATA_SSL_IGNORE    = CFG_KEY_DATA_SSL_IGNORE;
@@ -56,7 +55,7 @@ Integration::Integration(const QVariantMap& config, EntitiesInterface* entities,
       m_logCategory(plugin->m_logCategory) {
     // FIXME remove QVariantMap indirection for friendlyName and integrationId:
     //       plugins MUST set them themself. Otherwise it's just very confusing without any benefits.
-    for (QVariantMap::const_iterator iter = config.begin(); iter != config.end(); ++iter) {
+    for (QVariantMap::const_iterator iter = config.cbegin(); iter != config.cend(); ++iter) {
         if (iter.key() == Integration::KEY_FRIENDLYNAME)
             m_friendlyName = iter.value().toString();
         else if (iter.key() == Integration::KEY_ID)
