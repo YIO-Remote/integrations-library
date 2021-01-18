@@ -109,9 +109,9 @@ void ListEPGModel::setCount(int count) {
 
 void BrowseEPGModel::addEPGItem(const QString &key, const int &xCoordinate,
                                 const int &column, const int &width, const int& height, const QString& type,
-                                const QString& epgItemColor, const QString& epgItemTextColor, const QString& title, const QString& subtitle,
-                                const QString& description, const QString& startTime, const QString& endTime,
-                                const QString& imageUrl, const QVariant& commands) {
+                                const QString& epgItemColor, const QString& epgItemTextColor, const QString& title,
+                                const QString& subtitle, const QString& description, const QString& startTime,
+                                const QString& endTime, const QString& imageUrl, const QVariant& commands) {
     ListEPGModel *model = static_cast<ListEPGModel *>(m_model);
     EPGModelItem  item = EPGModelItem(key, xCoordinate, column, width, height, type, epgItemColor, epgItemTextColor,
                                       title, subtitle, description, startTime, endTime, imageUrl, commands);
