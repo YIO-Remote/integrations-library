@@ -43,7 +43,7 @@ class IntegrationInterface {
     virtual QVariantList getAllAvailableEntities() = 0;
 
     /**
-     * @brief addAvailableEntity
+     * @brief adds available entity from integration. custom features list is optional
      * @param entityId
      * @param type
      * @param integration
@@ -51,7 +51,8 @@ class IntegrationInterface {
      * @param supportedFeatures
      */
     virtual bool addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
-                                    const QString& friendlyName, const QStringList& supportedFeatures) = 0;
+                                    const QString& friendlyName, const QStringList& supportedFeatures,
+                                    const QStringList& customFeatures = QStringList()) = 0;
 
     /**
      * @brief sendCommand Must be implemented
@@ -80,7 +81,7 @@ class IntegrationInterface {
      */
     virtual QString friendlyName() = 0;
 
- public slots:  // NOLINT open issue: https://github.com/cpplint/cpplint/pull/99
+ public slots:
     /**
      * @brief connect Must be implemented by integration
      */

@@ -44,6 +44,7 @@ class Integration : public QObject, public IntegrationInterface {
     static const QString KEY_AREA;
     static const QString KEY_INTEGRATION;
     static const QString KEY_SUPPORTED_FEATURES;
+    static const QString KEY_CUSTOM_FEATURES;
     static const QString KEY_TYPE;
     static const QString KEY_MDNS;
     static const QString KEY_WORKERTHREAD;
@@ -64,7 +65,8 @@ class Integration : public QObject, public IntegrationInterface {
 
     QVariantList getAllAvailableEntities() override { return m_allAvailableEntities; }
     bool         addAvailableEntity(const QString& entityId, const QString& type, const QString& integration,
-                                    const QString& friendlyName, const QStringList& supportedFeatures) override;
+                                    const QString& friendlyName, const QStringList& supportedFeatures,
+                                    const QStringList& customFeatures = QStringList()) override;
     void sendCommand(const QString& type, const QString& entityId, int command, const QVariant& param) override = 0;
 
     // get the state
@@ -91,7 +93,7 @@ class Integration : public QObject, public IntegrationInterface {
     void disconnected();
     void stateChanged();
 
- public slots:                       // NOLINT open issue: https://github.com/cpplint/cpplint/pull/99
+ public slots:
     void connect() override = 0;     // Must be implemented by integration
     void disconnect() override = 0;  // Must be implemented by integration
     void enterStandby() override {}  // Can be overriden by integration
